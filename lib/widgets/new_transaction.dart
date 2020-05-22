@@ -1,4 +1,3 @@
-import 'user_transactions.dart';
 import 'package:flutter/material.dart';
 
 class NewTransaction extends StatelessWidget {
@@ -8,10 +7,23 @@ class NewTransaction extends StatelessWidget {
 
   NewTransaction(this.addTx);
 
+  void submitData() {
+    final enteredTitle = titleController.text;
+    final enteredAmount = double.parse(amountController.text);
+
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+      return;
+    }
+
+    addTx(
+      enteredTitle,
+      enteredAmount,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Color(0xff1f1b24),
       elevation: 5,
       child: Container(
         padding: EdgeInsets.all(12),
@@ -20,40 +32,27 @@ class NewTransaction extends StatelessWidget {
           children: <Widget>[
             TextField(
               controller: titleController,
+              onSubmitted: (_) => submitData(),
               decoration: InputDecoration(
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xffbb86fc)),
-//  when the TextFormField in focused
-                  ),
-                  labelText: 'Title',
-                  labelStyle: TextStyle(color: Color(0xffbb86fc)),
-                  filled: true,
-                  fillColor: Color(0xff1f1b24)),
-              style: TextStyle(color: Color(0xff03dac6)),
+                labelText: 'Title',
+              ),
             ),
             TextField(
               controller: amountController,
-              keyboardType: TextInputType.number,
+              onSubmitted: (_) => submitData(),
+              keyboardType:
+                  TextInputType.numberWithOptions(signed: true, decimal: true),
               decoration: InputDecoration(
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xffbb86fc)),
-//  when the TextFormField in focused
-                  ),
-                  labelText: 'Amount',
-                  labelStyle: TextStyle(color: Color(0xffbb86fc)),
-                  filled: true,
-                  fillColor: Color(0xff1f1b24)),
-              style: TextStyle(color: Color(0xff03dac6)),
+                labelText: 'Amount',
+              ),
             ),
             FlatButton(
-                onPressed: () {
-                  addTx(titleController.text,
-                      double.parse(amountController.text));
-                },
-                child: Text(
-                  "Add Transaction",
-                  style: TextStyle(color: Color(0xffbb86fc)),
-                ))
+              onPressed: submitData,
+              child: Text(
+                "Add Transaction",
+              ),
+              textColor: Colors.purple,
+            )
           ],
         ),
       ),
