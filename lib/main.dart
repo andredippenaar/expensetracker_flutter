@@ -12,10 +12,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Expense Tracker',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
+//        primaryColor: Color(0xff1995ad),
+//        accentColor: Color(0xffa1d6e2),
+//        canvasColor: Color(0xfff1f1f1),
+//        cardColor: Color(0xffffffff),
+        primaryColor: Color(0xff004445),
+        accentColor: Color(0xff2c7873),
+        canvasColor: Color(0xff6fb98f),
+        cardColor: Color(0xffffffff),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(),
@@ -90,7 +98,6 @@ class _MyHomePageState extends State<MyHomePage> {
             Card(
               child: Container(
                 width: double.infinity,
-                color: Color(0xff03dac6),
                 height: 200,
                 child: Center(child: Text("Chart")),
               ),

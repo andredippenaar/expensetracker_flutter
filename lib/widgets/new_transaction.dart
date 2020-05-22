@@ -60,7 +60,6 @@ class _NewTransactionState extends State<NewTransaction> {
               child: Text(
                 "Add Transaction",
               ),
-              textColor: Colors.purple,
             )
           ],
         ),
