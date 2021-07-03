@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Expense Tracker",
+          "Expense Tracker 2021",
         ),
         actions: <Widget>[
           IconButton(
@@ -133,7 +133,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: <Widget>[
           Chart(_recentTransactions),
-          Expanded(child: TransactionList(_userTransactions, _deleteTransaction)),
+          Expanded(
+              child: TransactionList(_userTransactions, _deleteTransaction)),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
