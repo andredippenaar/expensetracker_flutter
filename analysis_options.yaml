@@ -9,3 +9,5 @@ analyzer:
     missing_required_param: error
     parameter_assignments: error
     missing_return: error
+    argument_type_not_assignable: warning
+    dead_code: warning
